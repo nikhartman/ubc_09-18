@@ -1,0 +1,87 @@
+### from dark_background ###
+
+lines.color: white
+patch.edgecolor: white
+
+text.color: white
+
+axes.linewidth: 1.2     # edge linewidth
+axes.facecolor: (1,1,1,0)
+axes.edgecolor: white
+axes.labelcolor: white
+axes.prop_cycle: cycler('color', ['8dd3c7', 'feffb3', 'bfbbd9', 'fa8174', '81b1d2', 'fdb462', 'b3de69', 'bc82bd', 'ccebc4', 'ffed6f'])
+
+xtick.color: white
+ytick.color: white
+
+grid.color: white
+grid.linestyle:   : 
+
+figure.figsize: 5.2, 3.8
+figure.facecolor: (1,1,1,0)
+figure.edgecolor: (1,1,1,0)
+
+savefig.facecolor: (1,1,1,0)
+savefig.edgecolor: (1,1,1,0)
+
+
+### lines ###
+lines.linewidth: 2
+
+### ticks ###
+xtick.direction: in
+ytick.direction: in
+xtick.major.width: 1.2    # major tick width in points
+xtick.minor.width: 0.8    # minor tick width in points
+xtick.major.size: 5.0      # major tick size in points
+xtick.minor.size: 3.0      # minor tick size in points
+ytick.major.width: 1.2    # major tick width in points
+ytick.minor.width: 0.8    # minor tick width in points
+ytick.major.size: 5.0      # major tick size in points
+ytick.minor.size: 3.0      # minor tick size in points
+xtick.top: True
+ytick.right: True
+axes.labelpad: 2.0
+axes.axisbelow: True
+
+### fonts ###
+# trying to find a sans-serif configuration for math that 
+# is not a terrible eyesore
+# this is the best usetex:True option I have found...
+# text.usetex: True
+# text.latex.preamble: \usepackage{arev}
+
+# and the best usetex:False option I found...
+text.usetex: False
+font.family: sans-serif
+font.sans-serif: Helvetica
+mathtext.fontset : custom
+mathtext.default: regular
+mathtext.rm : Helvetica
+mathtext.it : Helvetica:italic
+mathtext.bf : Helvetica:bold
+mathtext.sf : Helvetica
+mathtext.tt : Helvetica
+mathtext.cal : Helvetica:italic
+
+font.size: 18
+axes.labelsize: 20
+xtick.labelsize: 16
+ytick.labelsize: 16
+    
+# legends
+legend.frameon: False
+legend.fontsize: 16
+legend.handletextpad: 0.25
+legend.handlelength: 1
+legend.borderaxespad : 0.25
+
+# maybe needed to avoid Type 3 fonts
+# pdf.fonttype: 42
+# ps.fonttype: 42
+
+# stuff that won't affect my vector graphic output
+# but makes my workflow easier
+savefig.dpi: 100
+figure.dpi: 100
+# nbagg.transparent: False

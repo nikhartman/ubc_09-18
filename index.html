@@ -1,0 +1,674 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+		<title>CM SEMINAR</title>
+
+		<link rel="stylesheet" href="css/reveal.css">
+		<link rel="stylesheet" href="css/theme/league.css">
+
+		<!-- Theme used for syntax highlighting of code -->
+		<link rel="stylesheet" href="lib/css/zenburn.css">
+
+		<!-- Printing and PDF exports -->
+		<!-- <script>
+			var link = document.createElement( 'link' );
+			link.rel = 'stylesheet';
+			link.type = 'text/css';
+			link.href = window.location.search.match( /print-pdf/gi ) ? 'css/print/pdf.css' : 'css/print/paper.css';
+			document.getElementsByTagName( 'head' )[0].appendChild( link );
+		</script> -->
+	</head>
+
+	<body>
+		<div class="reveal">
+			<div class="slides">
+
+                <!-- INTRO -->
+
+                <section id="title">
+					<h2> Direct Entropy Measurement in a Mesoscopic Quantum System </h2>
+                    <img src="figures/device_edited.png"> </img>
+					<p style="font-size: 0.8em;">
+                        <strong> Nikolaus Hartman -- University of British Columbia </strong> <br>
+                        <span style="font-size: 0.7em"> https://nikhartman.github.io/stanford_03-18 </span>
+					</p>
+                    <p>
+                        Stanford University<br>
+                        March 22nd, 2018
+                    </p>
+				</section>
+
+                <section id="people">
+					<h2> Important People </h2>
+                    <div style="display:flex; align-items: center">
+                        <div style="text-align: left; width: 48%; margin-left: auto; margin-right: 2%; font-size: 0.6em">
+                            <h2> <strong> Folk Group -- UBC: </strong> </h2>
+                            <figure style="float: left;">
+                                <img style="height: 4em" src="figures/josh.jpg">
+                                <figcaption> Josh Folk </figcpation>
+                            </figure>
+                            <figure style="float: left; margin-left: 25%;">
+                                <img style="height: 4em" src="figures/mohammad.jpg">
+                                <figcaption> Mohammad Samani </figcpation>
+                            </figure>
+                            <figure style="float: left;">
+                                <img style="height: 4em" src="figures/christian.jpg">
+                                <figcaption> Christian Olsen </figcpation>
+                            </figure>
+                            <figure style="float: left; margin-left: 12%;">
+                                <img style="height: 4em" src="figures/silvia.jpg">
+                                <figcaption> Silvia Luescher </figcpation>
+                            </figure>
+                        </div>
+
+                        <div style="text-align: left; width: 50%; margin-left: 2%; margin-right: auto; font-size: 0.6em">
+                            <h2> <strong> Manfra Group -- Purdue: </strong> </h2>
+                            <figure style="float: left;">
+                                <img style="height: 4em" src="figures/manfra.jpg">
+                                <figcaption> Mike Manfra </figcpation>
+                            </figure>
+                            <figure style="float: left; margin-left: 20%;">
+                                <img style="height: 4em" src="figures/saeed.jpg">
+                                <figcaption> Saeed Fallahi </figcpation>
+                            </figure>
+                            <figure style="float: left;">
+                                <img style="height: 4em" src="figures/gardner.jpg">
+                                <figcaption> Geoffrey C. Gardner </figcpation>
+                            </figure>
+                        </div>
+                    </div>
+				</section>
+
+                <section id="why-entropy">
+                    <h3>
+                        statistics of particles identified
+                        through thermodynamic measurements
+                    </h3>
+                    <p>
+                        Electrons and quasiparticles with strong interactions and non-trivial topology
+                        often have statistical properties that distinguish them from fermonic and bosonic particles.
+                    </p>
+                    <p class="fragment"> Entropy measurements are common in bulk crystals (mm scale)
+                        through <strong> heat capacity </strong> or <strong> magnetization </strong> measurements
+                    </p>
+                </section>
+
+                <section id="example">
+                    <!-- This is a good example of simple particle statistics combined with
+                    strong interactions that create non-trivial ground states with
+                    clear entropy signals -->
+                    <h3> Fermions with strong interactions </h3>
+                    <ul style="font-size: 0.8em;">
+                        <li> Ground state degeneracy in spin ice </li>
+                        <li> Confirmed behavior analogous to water ice</li>
+                    </ul>
+                    <img style="width: 70%" src="figures/spin_ice.svg"> </img>
+                </section>
+
+                <section id="moore-read">
+                    <h3> non-trivial particle statistics </h3>
+                    <ul>
+                        <li> FQH states in 2DEG </li>
+                    </ul>
+                    <img class="plain" style="width: 70%" src="figures/mohammad_2deg.svg"> </img>
+                </section>
+
+                <section id="more-moore-read">
+                    <h3> Moore-Read quasiparticles at&ensp;$\nu = 5/2$ </h3>
+                    <p style="text-align: left;"> Some properties of MR quasiparticles: </p>
+                    <ul>
+                        <li> Fractional charge:&ensp;$e/4$ (shot noise, localization)</li>
+                        <li class="fragment"> Braiding two quasiparticles transforms ground state (interferometry)</li>
+                        <li class="fragment"> Degenerate groundstate:&ensp;$2^{N_{qp}/2 - 1}$ (thermodynamics)</li>
+                </section>
+
+                <section id="cooper-stern">
+                    <h3> Cooper and Stern, PRL 102, 2009 </h3>
+
+                    <img style="height: 5em" src="figures/stern_cooper_screenshot.png"> </img>
+
+                    <p style="font-size: 0.8em;"> Measure low temperature residual entropy of MR quasiparticles</p>
+                    <p>
+                        $s_{MR} = \frac{1}{2} k_B n_{qp} \ln{2}$
+                    </p>
+                    <p>
+                        where&ensp;$n_{qp} = 4 \left| n - \frac{5}{2} \frac{eB}{h} \right|$
+                    </p>
+                </section>
+
+                <section id="cooper-stern-two">
+                    <h3 style="margin-bottom: 1em;"> Cooper and Stern, PRL 102, 2009 </h3>
+                    <p>
+                        <strong>Maxwell relation:</strong>&ensp;$\left(\frac{\partial \mu}{\partial T}\right)_{p,n}
+                            = -\left(\frac{\partial s}{\partial n}\right)_{p,T}$
+                    </p>
+                    <span class="fragment">
+                        <p>
+                            $\left(\frac{\partial \mu}{\partial T}\right)_{p,n}
+                                = -\frac{\partial s}{\partial n_{qp}}\left(\frac{\partial n_{qp}}{\partial n}\right)_{p,T}
+                                = \mp 2 k_B \ln{2}$
+                        </p>
+                    </span>
+                    <ul class="fragment">
+                        <li> We know how to control and measure $\delta \mu$ and $\delta T$! </li>
+                        <li> Look for discontinuity in $\partial \mu / \partial T$ </li>
+                    </ul>
+                </section>
+
+                <section id="mohammad">
+                    <h3> Samani, PhD Thesis (Folk lab), 2017 </h3>
+                    <img style="height: 7em" src="figures/mohammad_device.svg"> </img>
+                    <ul>
+                        <li> Measure $\delta \mu$ using an SET capacitively-coupled to
+                            the 2DEG while oscillating $\delta T$ through Joule heater
+                        </li>
+                    </ul>
+                </section>
+
+
+                <section id="mohammad-2">
+                    <h3> SET Response (Samani, PhD Thesis, 2017) </h3>
+                    <img class="plain" style="width: 65%;" src="figures/SET-sensitivity.svg"> </img>
+                    <!-- Mention incompressible regions and slopes in compressible region
+                    due to changing \mu_2deg with B -->
+                </section>
+
+                <section id="mohammad-3">
+                    <h3> Entropy Signal (Samani, PhD Thesis, 2017) </h3>
+                    <div style="text-align: center">
+                        <img class="plain" style="height: 6.5em; margin-right: 0.25em; margin-left: auto; margin-bottom: 0.1em;"
+                            src="figures/SET-g_1.svg"> </img>
+                        <img class="fragment plain" data-fragment-index=2
+                            style="height: 6.5em; margin-right: auto; margin-left: 0.25em; margin-bottom: 0.1em;"
+                            src="figures/SET-g_2.svg"> </img>
+                    </div>
+                    <div style="text-align: center">
+                        <img class="fragment plain" data-fragment-index=1 style="height: 6.5em; margin-right: 0.25em; margin-left: auto;"
+                            src="figures/SET-dg_1.svg"> </img>
+                        <img class="fragment plain" data-fragment-index=3 style="height: 6.5em; margin-right: auto; margin-left: 0.25em;"
+                            src="figures/SET-dg_2.svg"> </img>
+                    </div>
+                </section>
+
+                <section id="mohammad-4">
+                    <h3> Samani, PhD Thesis, 2017 (cont) </h3>
+                    <img class="plain" style="width: 65%;" src="figures/mohammad_main-result.svg"> </img>
+                    <p class="fragment" style="font-size: 0.8em">
+                        <strong> Negative result: </strong>
+                        Asymmetry of measured lineshape suggests $\delta S \neq 0$.
+                        No change in signal across $\nu = 5/2$ state.
+                    </p>
+                </section>
+
+                <section id="venkatachalam">
+                    <h3> Venkatachalam et al., Nature 469, 2011 </h3>
+                    <img style="height: 5em" src="figures/venkatachalam_screenshot.png"> </img>
+
+                    <div style="display:flex; align-items: center;" class="fragment">
+                        <div style="text-align: left; width: 48%; margin-left: auto; margin-right: 2%;">
+                            <p>
+                                <strong>Experimental insight: </strong>
+                            </p>
+                            <ul style="font-size: 0.8em;">
+                                <li>$\delta \mu$ measurement made by coupling SET to localized quasiparticle states</li>
+                                <li>Measured $e^* = e/4$ in $5/2$ state</li>
+                            </ul>
+                        </div>
+
+                        <img style="height: 6em; margin-right: auto; margin-left: 2%;"
+                            src="figures/venkatachalam_device.svg"> </img>
+                    </div>
+                </section>
+
+                <section id="ben-shach">
+                    <h3> Ben-Shach et al., PRL 110, 2013</h3>
+                    <img class="plain" style="width: 60%" src="figures/ben-shach_fig1.svg"> </img>
+                    <ul style="font-size: 0.8em;">
+                        <li> Charging spectrum of single particle addition energies, $\mu_N$, in localized state </li>
+                        <li> Coulomb blockade peak positions move with $T$ depending on $\Delta S$ </li>
+                    </ul>
+                    <p class="fragment">
+                        $\left(\frac{\partial \mu}{\partial T}\right)_{p,N}
+                        = -\left(\frac{\partial S}{\partial N}\right)_{p,T}
+                        \Rightarrow \delta \mu_N = -(\Delta S_{N-1 \rightarrow N}) \delta T$
+                    </p>
+                </section>
+
+                <section id="moving-on">
+                    <h3> Does this work? </h3>
+                    <blockquote>
+                        &ldquo;[Local quasiparticle trap] spectra reflect the QP
+                        statistics just as <b>electronic dot</b> spectra reflect the spin and
+                        fermionic statistics of electrons &rdquo;
+                    </blockquote>
+                    <h4 style="text-align: right">
+                        <strong> Ben-Shach et al. </strong>
+                    </h4>
+                </section>
+
+                <!-- SPIN ENTROPY EXPERIMENT -->
+
+                <section id="our-device">
+                    <section id="device-design">
+                        <h3> entropy of localized spins in a few-electron quantum dot </h3>
+                        <img style="width: 90%;" src="figures/gaas_device.svg"> </img>
+                    </section>
+
+                    <section id="wafer-info">
+                        <h3> 2DEG characterization (Manfra Lab) </h3>
+                        <img style="width: 70%;" src="figures/11-12-14_1a.svg"> </img>
+                    </section>
+                </section>
+
+                <section id="energy-levels">
+                    <h3> energy level diagram </h3>
+                    <img class="plain" style="width: 40%;" src="figures/coulomb_blockade.svg">
+                    <p style="font-size: 1.2em;">
+                        $\delta \mu_N = -(\Delta S_{N-1 \rightarrow N}) \delta T$
+                    </p>
+                    <!-- <p>
+                        Looking for oscillations in $\mu_N$ with $\delta T$ relative to $E_F$
+                    </p> -->
+                </section>
+
+                <section id="detailed-balance">
+                    <h3> Detailed Balance </h3>
+                    <div style="display: flex; align-items: center;">
+                        <div style="text-align: left; width: 48%; margin-left: 2%;
+                                    margin-right: auto; font-size: 0.8em">
+                            <p>
+                                $
+                                    \begin{align}
+                                        \Gamma_{in} &= \Gamma_{N-1 \rightarrow N} \\
+                                                    &= \Gamma d_{N} f(E_F - \mu_{N}) \\
+                                        \Gamma_{out} &= \Gamma_{N \rightarrow N-1} \\
+                                                    &= \Gamma d_{N-1} [1-f(E_F - \mu_{N})]
+                                    \end{align}
+                                $
+                            </p>
+                            <span class="fragment">
+                                <p>
+                                    <strong>When $\Gamma_{in}=\Gamma_{out}$:</strong>
+                                </p>
+                                <p>
+                                    $
+                                        \frac{d_{N-1}}{d_N} = \frac{f(E_F - \mu_N)}{[1-f(E_F - \mu_{N})]}
+                                    $
+                                </p>
+                                <p>
+                                    $ \ln{\frac{d_N}{d_{N-1}}} = (\mu_N-E_F)/k_B T$
+                                </p>
+                            </span>
+
+                        </div>
+
+                        <img class="plain" style="width: 45%; margin-right: auto; margin-left: 2%;"
+                            src="figures/detailed_balance.svg"> </img>
+                    </div>
+                </section>
+
+                <section id="charge-sensor">
+                    <h3> Charge Sensor Response </h3>
+
+                    <div style="display:flex; align-items: center;">
+                        <div style="text-align: left; width: 48%; margin-left: auto; margin-right: 2%; font-size: 0.8em">
+                            <p>
+                                <strong>At $V_{mid}$: </strong><br>
+                                $\Gamma_{in} = \Gamma_{out}$ <br>
+                                $P(N-1) = P(N)$
+                            </p>
+                            <p> <strong> Two things happen when $T$ changes: </strong></p>
+                            <ol>
+                                <li> Transition width broadens </li>
+                                <li> $V_{mid}$ shifts if $\Delta S_{N-1 \rightarrow N} \neq 0$ </li>
+                            </ol>
+                        </div>
+
+                        <img class="plain" style="height: 8em; margin-right: auto; margin-left: 2%;"
+                            src="figures/single_sensor_fit.svg"> </img>
+                    </div>
+                </section>
+
+                <section id="qualitative-entropy">
+                    <h3> Seeing Entropy Qualitatively in $\delta G_{sens}$ </h3>
+                    <div style="text-align: center">
+                        <img class="plain" style="height: 6.5em; margin-right: 0.25em; margin-left: auto; margin-bottom: 0.1em;"
+                            src="figures/g_fake_zero-dS.svg"> </img>
+                        <img class="fragment plain" data-fragment-index=2
+                            style="height: 6.5em; margin-right: auto; margin-left: 0.25em; margin-bottom: 0.1em;"
+                            src="figures/g_fake_non-zero-dS.svg"> </img>
+                    </div>
+                    <div style="text-align: center">
+                        <img class="fragment plain" data-fragment-index=1 style="height: 6.5em; margin-right: 0.25em; margin-left: auto;"
+                            src="figures/dg_fake_zero-dS.svg"> </img>
+                        <img class="fragment plain" data-fragment-index=3 style="height: 6.5em; margin-right: auto; margin-left: 0.25em;"
+                            src="figures/dg_fake_non-zero-dS.svg"> </img>
+                    </div>
+                </section>
+
+                <section id="charge-sensor-2">
+                    <h3> Charge Sensor -- Fit </h3>
+
+
+                    <img class="plain" style="height: 8em; margin-right: auto; margin-left: 2%;"
+                        src="figures/single_sensor_fit.svg"> </img>
+
+                    <p>
+                        $G_{sens}(V_p,T) \sim \tanh\left(\frac{\alpha (V_p - V_{mid}(T))}{2 k_B T}\right)$
+                    </p>
+                </section>
+
+                <section id="fitting-dS">
+                    <h3> Quantitative Measurement </h3>
+                    <div style="display:flex; align-items: center;">
+                        <div style="text-align: left; width: 48%; margin-left: auto; margin-right: 2%; font-size: 1em">
+                            <ul style="font-size: 0.8em;">
+                                <li>Oscillate $\delta T$ with AC I<sub>heat</sub> </li>
+                                <li>Measure $\delta G_{sens}$ with lock-in amplifier </li>
+                            </ul>
+                        </div>
+
+                        <img class="plain" style="width: 43%" src="figures/single_dg_no-fit.svg"> </img>
+                    </div>
+
+                    <p class="fragment" style="font-size: 0.8em;">
+                        $\delta G_{sens}(V_p, T) = \frac{dG_{sens}}{dT} \delta T$
+                    </p>
+                    <p class="fragment" style="font-size: 0.8em;">
+                        $\delta G_{sens}(V_p, T) \sim -\delta T
+                        \left[ \frac{\alpha(V_p - V_{mid}(T))}{2 k_B T} - \frac{1}{2}\color{#13DAEC}{\frac{\Delta S}{k_B}} \right]
+                        \cosh^{-2}\left(\frac{\alpha(V_p - V_{mid}(T))}{2 k_B T}\right)$
+                    </p>
+                </section>
+
+                <section id="fitting-dS-cont">
+                    <h3> Quantitative Measurement </h3>
+                    <img class="plain" style="height: 7.5em" src="figures/single_dg_fit.svg"> </img>
+                    <p style="font-size: 0.8em;">
+                        $S_0 = 0$,&ensp;$S_1 = k_B \ln{d_1}$ <br>
+                         where $d_1=2$ is the degeneracy of the 1-electron state
+                    </p>
+                    <p>
+                        <strong> Best fit: </strong>&ensp;
+                        $\frac{\Delta S_{01}}{k_B} = (1.02 \pm 0.03) \ln{2}$
+                    </p>
+                </section>
+
+                <section id="we-did-it">
+                    <h2> single particle entropy! </h2>
+
+                    <div style="text-align: left;" class="fragment">
+                        <h3> why this worked </h3>
+                        <ol style="margin-left: 8%; margin-bottom: 1em;">
+                            <li> Fast $\delta T$ oscillations </li>
+                            <li> Non-invasive charge sensing </li>
+                            <li> Thermally broadened transition </li>
+                            <li> $k_B \delta T < \Delta$ </li>
+                        </ol>
+                        <span class="fragment" style="margin-top: 1em;">
+                            <h3> Not required </h3>
+                            <ol style="margin-left: 8%">
+                                <li> Exact $\delta T$ </li>
+                                <li> Gate voltage to energy conversion, $\alpha$ </li>
+                            </ol>
+                        </span>
+                    </div>
+                </section>
+
+                <section id="dS-dT">
+                    <section id="dT-dependence">
+                        <h3> $\Delta S$ independent of $\delta T$ </h3>
+                        <img class="plain" style="width: 90%;" src="figures/dS-vs-dT.svg"> </img>
+                    </section>
+
+                    <section id="param-calibration">
+                        <img class="plain" style="width: 95%;"
+                            src="figures/dS-vs-dT_annotated.svg"> </img>
+                    </section>
+                </section>
+
+                <section id="really">
+                    <h2> Is the measured parameter really <strong> entropy </strong>? </h2>
+                </section>
+
+                <section id="zero-to-one-half">
+                    <section id="first-third">
+                        <h3> spin-0 to spin-1/2 transitions with in-plane field </h3>
+                        <img class="plain" style="width: 65%; margin-bottom: 0.1em"
+                             src="figures/one-three_no-fits.svg"> </img>
+                        <img class = "plain" style="width: 65%; margin-top: 0.1em"
+                             src="figures/dG-cuts_01.svg"> </img>
+                    </section>
+
+                    <section id='first-third-fits'>
+                        <h3> spin-0 to spin-1/2 transitions with in-plane field </h3>
+                        <img class="plain" style="width: 70%; margin-bottom: 0.1em" src="figures/one-three_fits.svg"> </img>
+                        <p>
+                            $S = k_B \sum_{-,+} p_{i}(B_\parallel, T) \ln{ p_{i}(B_\parallel,T) }$
+                        </p>
+                        <p>
+                            &ensp;with&ensp;$p_{\pm}(B_\parallel, T) = (1+ e^{\mp \frac{g\mu_B B_{\parallel}}{k_B T}})^{-1}$
+                        </p>
+                    </section>
+
+                    <section id='first-transport'>
+                        <h3> spin-0 to spin-1/2 transitions with in-plane field </h3>
+                        <img class="plain" style="width: 60%; margin-bottom: 0.25%;" src="figures/one-three_fits.svg"> </img>
+                        <img class="plain" style="width: 62%; margin-top: 0.25%;" src="figures/transport-spec_01.svg"> </img>
+                    </section>
+                </section>
+
+                <section id="second-g">
+                    <section id="second-electron">
+                        <h3> Tunable Degeneracy </h3>
+                        <img class="plain" style="width: 70%; margin-bottom: 0.1em" src="figures/two_fit.svg"> </img>
+                        <p>
+                            $S = k_B \sum_{-,+,\mathcal{S},\mathcal{T_+}} p_{i}(B_\parallel, T) \ln{ p_{i}(B_\parallel,T) }$
+                        </p>
+                        <p>
+                            &ensp;with&ensp;$p_{\mathcal{S}/\mathcal{T_+}}(B_\parallel, T) = (1+ e^{\mp \frac{g\mu_B B_\parallel - \Delta_{ST}}{k_B T}})^{-1}$
+                        </p>
+                    </section>
+
+                    <section id='second-transport'>
+                        <h3> spectroscopy of 1$\rightarrow$2 transition </h3>
+                        <img class="plain" style="width: 60%; margin-bottom: 0.25%" src="figures/two_fit.svg"> </img>
+                        <img class="plain" style="width: 62%; margin-top: 0.25%" src="figures/transport-spec_12.svg"> </img>
+                    </section>
+                </section>
+
+                <!-- OTHER APPLICATIONS OF THIS IDEA -->
+
+                <section id='new-physics'>
+                    <h2> What about measuring some <br> <strong>new</strong>&ensp;physics? </h2>
+                </section>
+
+                <section id="kondo-intro">
+                    <h3> Kondo States in Quantum Dots </h3>
+                    <ul>
+                        <li>Unscreened spin-1/2: $S = k_B \ln{2}$ </li>
+                        <li>
+                            Coupling to single reservoir (1-channel Kondo): <br>
+                            $S = k_B \ln{2} \rightarrow 0$ as coupling increases
+                        </li>
+                        <!-- <li class="fragment">
+                            Non-trivial entanglement structure in 2-channel Kondo model.
+                            <ul>
+                                <li> $S = \frac{1}{2} k_B \ln{2}$&ensp;with both reservoirs strongly coupled
+                                </li>
+                                <li style="font-style: italic;">
+                                     B. Alkurtass, ..., I. Affleck, ..., Physical Review B 93, 1 (2016).
+                                </li>
+                            </ul>
+                        </li> -->
+                    </ul>
+                </section>
+
+                <section id='one-ch-kondo'>
+                    <h3> 1-channel kondo </h3>
+                    <div style="text-align: center">
+                        <img class="plain" style="height: 6.5em; margin-right: 0.5em; margin-left: auto;"
+                            src="figures/peak-broadened.png"> </img>
+                        <img class="plain" data-fragment-index=1 style="height: 6.5em; margin-left: 0.5em; margin-right: auto;"
+                            src="figures/broadening-fits.svg"> </img>
+                    </div>
+                    <span style="font-size: 0.8em">
+                        <p class="fragment">
+                            $\delta G_{sens}(V_p, T) \sim -\delta T
+                            \left[ \frac{\alpha(V_p - V_{mid}(T))}{2 k_B T} - \frac{1}{2}\color{#13DAEC}{\frac{\Delta S}{k_B}} \right]
+                            \cosh^{-2}\left(\frac{\alpha(V_p - V_{mid}(T))}{2 k_B T}\right)$
+                        </p>
+                        <p class="fragment">
+                            $\delta G_{sens} \sim G_0 \frac{k_B \delta T}{h \Gamma} \color{#13DAEC}{\frac{\Delta S}{k_B}} \frac{1}{1+(\frac{\alpha e(V-V_0)}{h \Gamma})^2}$
+                        </p>
+                    </span>
+                </section>
+
+                <section id='new-1CK-device'>
+                    <h3> 1-channel kondo (new device!)</h3>
+
+                    <div style="display:flex; align-items: center;">
+                        <div style="text-align: left; width: 40%; margin-left: auto; margin-right: 2%; font-size: 0.8em">
+                            <ul>
+                                <li>Few electron dot acts as impurity</li>
+                                <li>Weakly coupled to open reservoir (right)</li>
+                                <li>Strongly coupled to large dot (left)</li>
+                            </ul>
+                        </div>
+
+                        <img style="width: 55%; margin-left: auto; margin-right: 2%;"
+                            src="figures/one-ch-kondo_device.png"> </img>
+                    </div>
+                </section>
+
+                <section id="kondo-2-ch">
+                    <h3> Kondo States in Quantum Dots </h3>
+                    <ul>
+                        <li style="opacity: 0.25;">Unscreened spin-1/2: $S = k_B \ln{2}$ </li>
+                        <li style="opacity: 0.25;">
+                            Coupling to single reservoir (1-channel Kondo): <br>
+                            $S = k_B \ln{2} \rightarrow 0$ as coupling increases
+                        </li>
+                        <li>
+                            Non-trivial entanglement in 2-channel Kondo state
+                            <ul>
+                                <li> $S = \frac{1}{2} k_B \ln{2}$&ensp;with both reservoirs strongly coupled
+                                </li>
+                                <li style="font-style: italic;">
+                                     B. Alkurtass, ..., I. Affleck, ..., Physical Review B 93, 1 (2016).
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                </section>
+
+                <section id="majorana">
+                    <h3> (correctly) Identifying Majorana bound states </h3>
+
+                    <div style="display:flex; align-items: center;">
+                        <img style="width: 40%; margin-left: auto; margin-right: 2%;"
+                            src="figures/majorana-mode.png"> </img>
+                        <img style="width: 40%; margin-right: auto; margin-left: 2%;"
+                            src="figures/not-majorana-mode.png"> </img>
+                    </div>
+                    <p style="margin-top: 0.1em; margin-bottom: 0.1em; text-align: right; font-size: 0.5em; font-style: italic;">
+                        C-X Liu, et al., arXiv:1803.05423
+                    </p>
+                    <span class="fragment">
+                        <img style="width: 80%;" src="figures/majorana-data.svg"> </img>
+
+                        <p style="margin-top: 0.1em; margin-bottom: 0.1em; text-align: right; font-size: 0.5em; font-style: italic;">
+                            F. Nichele, et al., PRL, 119, 2017
+                        </p>
+                    </span>
+                </section>
+
+                <section id="majorana-two">
+                    <h3> (correctly) Identifying Majorana bound states </h3>
+
+                    <img style="width: 80%;" src="figures/majorana-data.svg"> </img>
+
+                    <ul>
+                        <li> identify non-Abelian Majorana mode by non-integer values of $e^{S/k_B}$ </li>
+                        <li>
+                             S. Smirnov, Physical Review B 92, 1 (2015).
+                         </li>
+                    </ul>
+                </section>
+
+                <section id='back-to-five-half'>
+                    <h3> non-Abelian statistics in $\nu = 5/2$ </h3>
+                    <p style="text-align: left;">Possible measurements:</p>
+                    <ul>
+                        <li> Charging diagram of localized state </li>
+                        <ul>
+                            <li> Difficult to localize without destroying </li>
+                            <li> How to distinguish negative results </li>
+                        </ul>
+                        <li> Capacitance measurement of compressibility, $\kappa$</li>
+                        <ul>
+                            <li> Bulk measurement </li>
+                            <li> Small signal </li>
+                        </ul>
+                    </ul>
+                </section>
+
+                <!-- CONCLUSION -->
+
+                <section id="conclusions" style="text-align: left;">
+
+                    <h3> <strong> Conclusions: </strong> </h3>
+
+                    <ul>
+                        <li> Developed a thermodynamic measurement of few-particle entropy </li>
+                        <li> Measured entropy of a few-electron system to 5% accuracy </li>
+                        <li> Confirmed results by investigating magnetic field behavior </li>
+                        <li> Obvious extensions of this work are to localized states with non-trivial statistics.</li>
+                    </ul>
+
+                    <div style="font-size: 0.8em">
+                        <p>
+                            This talk: <a href="https://nikhartman.github.io/stanford_03-18"> https://nikhartman.github.io/stanford_03-18 </a>
+                        </p>
+                        <p>
+                            Contact me: <a href="mailto:nik.hartman@gmail.com"> nik.hartman@gmail.com </a>
+                        </p>
+                    </div>
+                </section>
+
+			</div>
+		</div>
+
+		<script src="lib/js/head.min.js"></script>
+		<script src="js/reveal.js"></script>
+
+		<script>
+			// More info about config & dependencies:
+			// - https://github.com/hakimel/reveal.js#configuration
+			// - https://github.com/hakimel/reveal.js#dependencies
+			Reveal.initialize({
+                controls: true,
+                progress: true,
+                history: true,
+                center: true,
+                slideNumber: 'h.v',
+                transition: 'slide', // none/fade/slide/convex/concave/zoom
+
+				dependencies: [
+					{ src: 'plugin/markdown/marked.js' },
+					{ src: 'plugin/markdown/markdown.js' },
+					{ src: 'plugin/notes/notes.js', async: true },
+					{ src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+                    { src: 'plugin/math/math.js', async: true }, // MathJax
+                ]
+			});
+
+            // Reveal.addEventListener( 'slidechanged', function( event ) {
+            //     MathJax.Hub.Rerender();
+            // } );
+		</script>
+	</body>
+</html>
