@@ -71,7 +71,7 @@ ytick.labelsize: 16
     
 # legends
 legend.frameon: False
-legend.fontsize: 16
+legend.fontsize: 18
 legend.handletextpad: 0.25
 legend.handlelength: 1
 legend.borderaxespad : 0.25

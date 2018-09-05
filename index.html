@@ -32,12 +32,12 @@
 					<h2> Direct Entropy Measurement in a Mesoscopic Quantum System </h2>
                     <img src="figures/device_edited.png"> </img>
 					<p style="font-size: 0.8em;">
-                        <strong> Nikolaus Hartman -- University of British Columbia </strong> <br>
-                        <span style="font-size: 0.7em"> https://nikhartman.github.io/stanford_03-18 </span>
+                        <strong> Nik Hartman </strong> <br>
+                        <span style="font-size: 0.7em"> https://nikhartman.github.io/ubc_09-18 </span>
 					</p>
                     <p>
-                        Stanford University<br>
-                        March 22nd, 2018
+                        UBC Condensed Matter Seminar<br>
+                        September 6th, 2018
                     </p>
 				</section>
 
@@ -91,7 +91,7 @@
                         Electrons and quasiparticles with strong interactions and non-trivial topology
                         often have statistical properties that distinguish them from fermonic and bosonic particles.
                     </p>
-                    <p class="fragment"> Entropy measurements are common in bulk crystals (mm scale)
+                    <p class="fragment"> Entropy measurements -- common in bulk samples (mm scale)
                         through <strong> heat capacity </strong> or <strong> magnetization </strong> measurements
                     </p>
                 </section>
@@ -118,9 +118,9 @@
 
                 <section id="more-moore-read">
                     <h3> Moore-Read quasiparticles at&ensp;$\nu = 5/2$ </h3>
-                    <p style="text-align: left;"> Some properties of MR quasiparticles: </p>
+                    <p style="text-align: left;"> Properties (and measurement) of MR quasiparticles: </p>
                     <ul>
-                        <li> Fractional charge:&ensp;$e/4$ (shot noise, localization)</li>
+                        <li class="fragment"> Fractional charge:&ensp;$e/4$ (shot noise, localization)</li class="fragment">
                         <li class="fragment"> Braiding two quasiparticles transforms ground state (interferometry)</li>
                         <li class="fragment"> Degenerate groundstate:&ensp;$2^{N_{qp}/2 - 1}$ (thermodynamics)</li>
                 </section>
@@ -153,7 +153,7 @@
                         </p>
                     </span>
                     <ul class="fragment">
-                        <li> We know how to control and measure $\delta \mu$ and $\delta T$! </li>
+                        <li> We know how to control/measure $\delta \mu$ and $\delta T$! </li>
                         <li> Look for discontinuity in $\partial \mu / \partial T$ </li>
                     </ul>
                 </section>
@@ -214,7 +214,7 @@
                             </p>
                             <ul style="font-size: 0.8em;">
                                 <li>$\delta \mu$ measurement made by coupling SET to localized quasiparticle states</li>
-                                <li>Measured $e^* = e/4$ in $5/2$ state</li>
+                                <li>Measured $e^* = e/4$ in $5/2$ state (compare with 7/3)</li>
                             </ul>
                         </div>
 
@@ -227,7 +227,7 @@
                     <h3> Ben-Shach et al., PRL 110, 2013</h3>
                     <img class="plain" style="width: 60%" src="figures/ben-shach_fig1.svg"> </img>
                     <ul style="font-size: 0.8em;">
-                        <li> Charging spectrum of single particle addition energies, $\mu_N$, in localized state </li>
+                        <li> Charging spectrum of single (quasi-)particle addition energies, $\mu_N$, in localized state </li>
                         <li> Coulomb blockade peak positions move with $T$ depending on $\Delta S$ </li>
                     </ul>
                     <p class="fragment">
@@ -264,7 +264,7 @@
                 </section>
 
                 <section id="energy-levels">
-                    <h3> energy level diagram </h3>
+                    <h3> quantum dot -- engergy levels </h3>
                     <img class="plain" style="width: 40%;" src="figures/coulomb_blockade.svg">
                     <p style="font-size: 1.2em;">
                         $\delta \mu_N = -(\Delta S_{N-1 \rightarrow N}) \delta T$
@@ -275,7 +275,7 @@
                 </section>
 
                 <section id="detailed-balance">
-                    <h3> Detailed Balance </h3>
+                    <h3> Detailed Balance (alternate explaination) </h3>
                     <div style="display: flex; align-items: center;">
                         <div style="text-align: left; width: 48%; margin-left: 2%;
                                     margin-right: auto; font-size: 0.8em">
@@ -434,50 +434,46 @@
                     <h2> Is the measured parameter really <strong> entropy </strong>? </h2>
                 </section>
 
-                <section id="zero-to-one-half">
-                    <section id="first-third">
-                        <h3> spin-0 to spin-1/2 transitions with in-plane field </h3>
-                        <img class="plain" style="width: 65%; margin-bottom: 0.1em"
-                             src="figures/one-three_no-fits.svg"> </img>
-                        <img class = "plain" style="width: 65%; margin-top: 0.1em"
-                             src="figures/dG-cuts_01.svg"> </img>
-                    </section>
-
-                    <section id='first-third-fits'>
-                        <h3> spin-0 to spin-1/2 transitions with in-plane field </h3>
-                        <img class="plain" style="width: 70%; margin-bottom: 0.1em" src="figures/one-three_fits.svg"> </img>
-                        <p>
-                            $S = k_B \sum_{-,+} p_{i}(B_\parallel, T) \ln{ p_{i}(B_\parallel,T) }$
-                        </p>
-                        <p>
-                            &ensp;with&ensp;$p_{\pm}(B_\parallel, T) = (1+ e^{\mp \frac{g\mu_B B_{\parallel}}{k_B T}})^{-1}$
-                        </p>
-                    </section>
-
-                    <section id='first-transport'>
-                        <h3> spin-0 to spin-1/2 transitions with in-plane field </h3>
-                        <img class="plain" style="width: 60%; margin-bottom: 0.25%;" src="figures/one-three_fits.svg"> </img>
-                        <img class="plain" style="width: 62%; margin-top: 0.25%;" src="figures/transport-spec_01.svg"> </img>
-                    </section>
+                <section id="first-third">
+                    <h3> spin-0 to spin-1/2 transitions with in-plane field </h3>
+                    <img class="plain" style="width: 65%; margin-bottom: 0.1em"
+                         src="figures/one-three_no-fits.svg"> </img>
+                    <img class = "plain" style="width: 65%; margin-top: 0.1em"
+                         src="figures/dG-cuts_01.svg"> </img>
                 </section>
 
-                <section id="second-g">
-                    <section id="second-electron">
-                        <h3> Tunable Degeneracy </h3>
-                        <img class="plain" style="width: 70%; margin-bottom: 0.1em" src="figures/two_fit.svg"> </img>
-                        <p>
-                            $S = k_B \sum_{-,+,\mathcal{S},\mathcal{T_+}} p_{i}(B_\parallel, T) \ln{ p_{i}(B_\parallel,T) }$
-                        </p>
-                        <p>
-                            &ensp;with&ensp;$p_{\mathcal{S}/\mathcal{T_+}}(B_\parallel, T) = (1+ e^{\mp \frac{g\mu_B B_\parallel - \Delta_{ST}}{k_B T}})^{-1}$
-                        </p>
-                    </section>
+                <section id='first-third-fits'>
+                    <h3> spin-0 to spin-1/2 transitions with in-plane field </h3>
+                    <img class="plain" style="width: 70%; margin-bottom: 0.1em" src="figures/one-three_fits.svg"> </img>
+                    <p>
+                        $S = k_B \sum_{-,+} p_{i}(B_\parallel, T) \ln{ p_{i}(B_\parallel,T) }$
+                    </p>
+                    <p>
+                        &ensp;with&ensp;$p_{\pm}(B_\parallel, T) = (1+ e^{\mp \frac{g\mu_B B_{\parallel}}{k_B T}})^{-1}$
+                    </p>
+                </section>
 
-                    <section id='second-transport'>
-                        <h3> spectroscopy of 1$\rightarrow$2 transition </h3>
-                        <img class="plain" style="width: 60%; margin-bottom: 0.25%" src="figures/two_fit.svg"> </img>
-                        <img class="plain" style="width: 62%; margin-top: 0.25%" src="figures/transport-spec_12.svg"> </img>
-                    </section>
+                <section id='first-transport'>
+                    <h3> spin-0 to spin-1/2 transitions with in-plane field </h3>
+                    <img class="plain" style="width: 60%; margin-bottom: 0.25%;" src="figures/one-three_fits.svg"> </img>
+                    <img class="plain" style="width: 62%; margin-top: 0.25%;" src="figures/transport-spec_01.svg"> </img>
+                </section>
+
+								<section id='second-transport'>
+										<h3> Tunable Degeneracy at 1$\rightarrow$2 transition </h3>
+										<img class="plain" style="width: 62%; margin-top: 0.25%" src="figures/transport-spec_12.svg"> </img>
+										<img class="plain" style="width: 60%; margin-bottom: 0.25%" src="figures/two_no_fit.svg"> </img>
+								</section>
+
+                <section id="second-electron">
+                    <h3> Tunable Degeneracy at 1$\rightarrow$2 transition </h3>
+                    <img class="plain" style="width: 70%; margin-bottom: 0.1em" src="figures/two_fit.svg"> </img>
+                    <p>
+                        $S = k_B \sum_{-,+,\mathcal{S},\mathcal{T_+}} p_{i}(B_\parallel, T) \ln{ p_{i}(B_\parallel,T) }$
+                    </p>
+                    <p>
+                        &ensp;with&ensp;$p_{\mathcal{S}/\mathcal{T_+}}(B_\parallel, T) = (1+ e^{\mp \frac{g\mu_B B_\parallel - \Delta_{ST}}{k_B T}})^{-1}$
+                    </p>
                 </section>
 
                 <!-- OTHER APPLICATIONS OF THIS IDEA -->
@@ -494,7 +490,7 @@
                             Coupling to single reservoir (1-channel Kondo): <br>
                             $S = k_B \ln{2} \rightarrow 0$ as coupling increases
                         </li>
-                        <!-- <li class="fragment">
+                        <li style="opacity: 0.25;">
                             Non-trivial entanglement structure in 2-channel Kondo model.
                             <ul>
                                 <li> $S = \frac{1}{2} k_B \ln{2}$&ensp;with both reservoirs strongly coupled
@@ -503,19 +499,16 @@
                                      B. Alkurtass, ..., I. Affleck, ..., Physical Review B 93, 1 (2016).
                                 </li>
                             </ul>
-                        </li> -->
+                        </li>
                     </ul>
                 </section>
 
                 <section id='one-ch-kondo'>
-                    <h3> 1-channel kondo </h3>
+                    <h3> 1-channel kondo: attempt 1</h3>
                     <div style="text-align: center">
-                        <img class="plain" style="height: 6.5em; margin-right: 0.5em; margin-left: auto;"
-                            src="figures/peak-broadened.png"> </img>
-                        <img class="plain" data-fragment-index=1 style="height: 6.5em; margin-left: 0.5em; margin-right: auto;"
-                            src="figures/broadening-fits.svg"> </img>
+                        <img class="plain" style="height: 6.5em;" src="figures/peak_broadened.png"> </img>
                     </div>
-                    <span style="font-size: 0.8em">
+                    <span style="font-size: 0.8em;">
                         <p class="fragment">
                             $\delta G_{sens}(V_p, T) \sim -\delta T
                             \left[ \frac{\alpha(V_p - V_{mid}(T))}{2 k_B T} - \frac{1}{2}\color{#13DAEC}{\frac{\Delta S}{k_B}} \right]
@@ -528,7 +521,7 @@
                 </section>
 
                 <section id='new-1CK-device'>
-                    <h3> 1-channel kondo (new device!)</h3>
+                    <h3> 1-channel kondo: new device!</h3>
 
                     <div style="display:flex; align-items: center;">
                         <div style="text-align: left; width: 40%; margin-left: auto; margin-right: 2%; font-size: 0.8em">
@@ -542,6 +535,11 @@
                         <img style="width: 55%; margin-left: auto; margin-right: 2%;"
                             src="figures/one-ch-kondo_device.png"> </img>
                     </div>
+                </section>
+
+								<section id='new-1CK-meas'>
+                    <h3> 1-channel kondo: attempt 2</h3>
+
                 </section>
 
                 <section id="kondo-2-ch">
@@ -631,7 +629,7 @@
 
                     <div style="font-size: 0.8em">
                         <p>
-                            This talk: <a href="https://nikhartman.github.io/stanford_03-18"> https://nikhartman.github.io/stanford_03-18 </a>
+                            This talk: <a href="https://nikhartman.github.io/ubc_09-18"> https://nikhartman.github.io/ubc_09-18 </a>
                         </p>
                         <p>
                             Contact me: <a href="mailto:nik.hartman@gmail.com"> nik.hartman@gmail.com </a>
