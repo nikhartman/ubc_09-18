@@ -88,25 +88,28 @@ def add_subplot_id(ax, id_lttr, loc, fontsize=16):
 
 def dfdx(f, x, axis = None):
     # returns df(x)/dx
-    dx = (x - np.roll(x,1))[1:].mean()
+    dx = np.nanmean((x - np.roll(x,1))[1:])
     return np.gradient(f,dx, axis = axis)
 
 def moving_avg(x, y, avgs, axis = None) :
         
-    xx = np.cumsum(x, dtype=np.float)
+    xx = np.nancumsum(x, dtype=np.float)
     xx[avgs:] = xx[avgs:] - xx[:-avgs]
     xx = xx[avgs - 1:] / avgs
 
     if axis==0:
-        ret = np.cumsum(y, axis=0, dtype=np.float)
+        ret = np.nancumsum(y, axis=0, dtype=np.float)
+        ret[np.isnan(y)] = np.nan
         ret[avgs:] = ret[avgs:] - ret[:-avgs]
         return xx, ret[avgs - 1:] / avgs
     elif axis==1:
-        ret = np.cumsum(y, axis=1, dtype=np.float)
+        ret = np.nancumsum(y, axis=1, dtype=np.float)
+        ret[np.isnan(y)] = np.nan
         ret[:,avgs:] = ret[:,avgs:] - ret[:,:-avgs]
         return xx, ret[:,avgs - 1:] / avgs
     else:
-        ret = np.cumsum(y, dtype=np.float)
+        ret = np.nancumsum(y, dtype=np.float)
+        ret[np.isnan(y)] = np.nan
         ret[avgs:] = ret[avgs:] - ret[:-avgs]
         return xx, ret[avgs - 1:] / avgs
         
@@ -132,24 +135,37 @@ def get_subset(data, bounds):
     else:
         raise NotImplemented('1d waves not implemented. Go fix it.')
         
-def xy_to_meshgrid(x,y):
+def xy_to_meshgrid(x, y, xoffset=None):
     """ returns a meshgrid that makes sense for pcolorgrid
         given z data that should be centered at (x,y) pairs """
+    # use the xoffset paramter to shift each row of the x output by the corresponding column
+
     nx = len(x)
     ny = len(y)
 
     dx = (x[-1] - x[0]) / float(nx - 1)
     dy = (y[-1] - y[0]) / float(ny - 1)
 
-    # shift x and y back by half a step
-    x = x-dx/2.0
-    y = y-dy/2.0
-    
-    xn = x[-1]+dx
-    yn = y[-1]+dy
-    
-    return np.meshgrid(np.append(x,xn), np.append(y,yn))
+    ynew = np.append(y-dy/2.0,y[-1]+dy/2.0)
+    ynew = np.asanyarray(ynew).reshape(-1,1)
+
+    if not xoffset:
+        xnew = np.append(x-dx/2.0,x[-1]+dx/2.0)
+        xnew = np.asanyarray(xnew).reshape(1,-1)
+        output = np.broadcast_arrays(*[xnew, ynew], subok=True) # create the full N-D matrix
+    else:
         
+        base = np.abs(dx)
+        rnd_centers = (base * (np.array(xoffset) / base).round()).round(7) # round offsets to nearest step size
+        
+        # thinking out loud here...
+        # need to add z as input to make this work, i think?
+        z_shift = ((rnd_centers - rnd_centers[0])/dx).round().astype(np.int)
+        xx = np.empty((nx+z_shift.max(),ny+1))
+        raise RuntimeError('xoffset not implemented')
+        
+    return [a.copy() for a in output.append(z)]
+
 ###################
 ### LINE SHAPES ###
 ###################
@@ -373,6 +389,8 @@ def di_fit_simultaneous(x, z, centers, widths, x0bounds,
         icenters = np.nanargmin(np.abs(x.transpose()-centers), axis=0)
         ilow = np.nanargmin(np.abs(x.transpose()-(centers-span)), axis=0)
         ihigh = np.nanargmin(np.abs(x.transpose()-(centers+span)), axis=0)
+        if ilow[0] > ihigh[0]:
+            ilow, ihigh = ihigh, ilow
     else:
         ilow = np.zeros(n, dtype=np.int)
         ihigh = -1*np.ones(n, dtype=np.int)
@@ -420,7 +438,7 @@ def di_fit_simultaneous(x, z, centers, widths, x0bounds,
             eps_err = np.zeros((n,2))
         for i in range(n):
             p0 = [centers[i], widths[i], 
-                  max(abs(z[i,ilow[i]:ihigh[i]].min()), abs(z[i,ilow[i]:ihigh[i]].max())),
+                  max(abs(np.nanmin(z[i,ilow[i]:ihigh[i]])), abs(np.nanmax(z[i,ilow[i]:ihigh[i]]))),
                   (z[i,ilow[i]]+z[i,ihigh[i]])/2.0, 0.0]
             bounds = [(x0bounds[0], 0.05, 0.0, -0.05, -2.0), (x0bounds[1], 10.0, 0.5, 0.05, 2.0)]
             df.loc[i], _ = curve_fit(di_sense_simple, x[i,ilow[i]:ihigh[i]], 
